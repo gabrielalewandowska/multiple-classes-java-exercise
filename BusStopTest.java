@@ -22,4 +22,18 @@ public class BusStopTest{
   public void hasCorrectPeopleCount(){
     assertEquals( 0, busStop.peopleCount() );
   }
+
+  @Test
+  public void canAddPersonToLine(){
+    busStop.add(person);
+    assertEquals(1, busStop.peopleCount());
+  }
+
+  @Test
+  public void checkTransfer(){
+    busStop.add(person);
+    busStop.transfer(bus);
+    assertEquals(0, busStop.peopleCount());
+    assertEquals(1, bus.passengerCount());
+  }
 }

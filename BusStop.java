@@ -9,7 +9,7 @@ public class BusStop{
 
   public BusStop(String name){
     this.name = name;
-    this.people = new Person[5];
+    this.people = new Person[2];
   }
 
   public String getName(){
@@ -30,10 +30,20 @@ public class BusStop{
     return this.peopleCount() == this.people.length;
   }
 
-  // public void transfer(Bus bus){
-  //   for(int i =0; i < peopleCount(), i++){
-  //     bus.add(this.people[i]);
-  //   }
-  //   this.people = new Person[20];
-  // }
+  public void add(Person personWaiting){
+    if(this.isLineFull()){
+      return;
+    }
+    int peopleCount = peopleCount();
+    this.people[peopleCount] = personWaiting;
+  }
+
+
+  public void transfer(Bus bus){
+    for(int i = 0; i < peopleCount(); i++){
+      bus.add(this.people[i]);
+    }
+    this.people = new Person[2];
+  }
+
 }
